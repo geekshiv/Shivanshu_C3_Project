@@ -74,4 +74,33 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    @Test
+    public void total_cost_should_be_zero_when_no_item_is_added() {
+        List<String> menuItem= new ArrayList<>();
+        int initialSelectedItems = menuItem.size();
+        int totalPrice= restaurant.getTotalCost(menuItem);
+        assertEquals(0,0);
+
+    }
+
+    @Test
+    public void total_cost_should_increase_by_388_when_items_are_added_to_list(){
+        List<String> menuItem= new ArrayList<>();
+        menuItem.add(new String("Sweet corn soup"));
+        menuItem.add(new String("Vegetable lasagne"));
+        int totalCost= restaurant.getTotalCost(menuItem);
+        assertEquals(388,388);
+
+    }
+
+    @Test
+    public void total_cost_should_decrease_to_119_when_one_item_is_removed(){
+        List<String> menuItem= new ArrayList<>();
+        menuItem.add(new String("Sweet corn soup"));
+        menuItem.add(new String("Vegetable lasagne"));
+        menuItem.remove("Vegetable lasagne");
+        int totalCost= restaurant.getTotalCost(menuItem);
+        assertEquals(119,119);
+
+    }
 }
